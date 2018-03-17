@@ -2,38 +2,42 @@ const expect = require('expect');
 
 const utils = require('./utils');
 
-it('should add two numbers', () => {
-  const result = utils.add(33, 11);
+describe('Utils', () => {
+  describe('#add', () => {
+    it('should add two numbers', () => {
+      const result = utils.add(33, 11);
+      expect(result).toBe(44).toBeA('number');
+    });
 
-  expect(result).toBe(44).toBeA('number');
-});
-
-it('should asnyc add two numbers', (done) => {
-  utils.asyncAdd(5, 6, (sum) => {
-    expect(sum).toBe(11).toBeA('number');
-    done();
+    it('should asnyc add two numbers', (done) => {
+      utils.asyncAdd(5, 6, (sum) => {
+        expect(sum).toBe(11).toBeA('number');
+        done();
+      });
+    });
   });
-});
 
-it('should square a number', () => {
-  const result = utils.square(12);
+  describe('#square', () => {
+    it('should square a number', () => {
+      const result = utils.square(12);
+      expect(result).toBe(144).toBeA('number');
+    });
 
-  expect(result).toBe(144).toBeA('number');
-});
-
-it('should asnyc square a number', (done) => {
-  utils.asyncSquare(13, (sum) => {
-    expect(sum).toBe(169).toBeA('number');
-    done();
+    it('should asnyc square a number', (done) => {
+      utils.asyncSquare(13, (sum) => {
+        expect(sum).toBe(169).toBeA('number');
+        done();
+      });
+    });
   });
-});
 
-it('should set firstName and lastName', () => {
-  const user = {location: 'London', age: 18};
-  const result = utils.setName(user, 'Agnes Ching');
-  expect(result).toInclude({
-    firstName: 'Agnes',
-    lastName: 'Ching'
+  it('should set firstName and lastName', () => {
+    const user = {location: 'London', age: 18};
+    const result = utils.setName(user, 'Agnes Ching');
+    expect(result).toInclude({
+      firstName: 'Agnes',
+      lastName: 'Ching'
+    });
   });
 });
 
